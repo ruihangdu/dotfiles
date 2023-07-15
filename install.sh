@@ -6,7 +6,7 @@ install_zsh_users_plugins() {
     git clone https://github.com/zsh-users/$1.git ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/$1
 }
     
-if [[ -z "${ZSH}" ]]
+if [[ -z "${ZSH}" && ! -e ${HOME}/.oh-my-zsh ]]
 then
     echo "installing Oh-My-ZSH"
     ZSH=${HOME}/.oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh); exit"
@@ -66,7 +66,7 @@ while true; do
 done
 
 # Step 3: Clean up previous dotfiles
-dotfiles=("${HOME}/.zshrc", "${HOME}/.zsh_functions", "${HOME}/.vimrc", "${HOME}/.vim")
+dotfiles=("${HOME}/.zshrc" "${HOME}/.zsh_functions" "${HOME}/.vimrc" "${HOME}/.vim")
 for dotfile in "${dotfiles[@]}"
 do
     if [ -e ${dotfile} ]
