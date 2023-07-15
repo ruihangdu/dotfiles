@@ -71,7 +71,7 @@ for dotfile in "${dotfiles[@]}"
 do
     if [ -e ${dotfile} ]
     then
-        rm -rf ${dotfile}
+        rm -rfv ${dotfile}
     fi
 done
 
